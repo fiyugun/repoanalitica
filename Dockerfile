@@ -1,7 +1,11 @@
-COPY requirements.txt
-RUN pip install -r requirements.txt
 FROM python:3.10-slim
 WORKDIR /app
-copy app.py /app
-CMD ["python","app.py"]
 
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
+
+COPY app.py /app/
+COPY claves.py /app/
+COPY mensaje.py /app/
+
+CMD ["python", "app.py"]
